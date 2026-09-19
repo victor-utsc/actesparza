@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crítica a la UTSC</title>
+    <style>
+      :root {
+        --verde-oscuro: #0d5c3b;
+        --verde-medio: #1d7a4d;
+        --verde-claro: #4ec48a;
+        --verde-suave: #dff7e9;
+        --blanco: #ffffff;
+        --gris-fuerte: #1e2a23;
+        --gris-claro: #eef4f1;
+        --sombra: 0 16px 40px rgba(10, 69, 45, 0.18);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, #eafaf0 0%, #d8f4df 28%, #c7eccf 100%);
+        color: var(--gris-fuerte);
+      }
+
+      .container {
+        width: min(1100px, 90%);
+        margin: 0 auto;
+      }
+
+      header {
+        background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+        color: var(--blanco);
+        padding: 32px 0 60px;
+        box-shadow: var(--sombra);
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .brand {
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.4fr 0.9fr;
+        gap: 28px;
+        align-items: center;
+        margin-top: 32px;
+      }
+
+      .hero h1 {
+        margin: 0 0 14px;
+        font-size: clamp(2.2rem, 4vw, 4rem);
+        line-height: 1.1;
+      }
+
+      .hero p {
+        margin: 0;
+        font-size: 1.08rem;
+        line-height: 1.7;
+        max-width: 640px;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .hero-badge {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 24px;
+        min-height: 220px;
+        box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.05);
+      }
+
+      .hero-badge span {
+        display: inline-block;
+        padding: 18px 26px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 2px solid rgba(255, 255, 255, 0.28);
+        border-radius: 18px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      main {
+        margin-top: -24px;
+        padding-bottom: 50px;
+      }
+
+      .section-card {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(13, 92, 59, 0.08);
+        box-shadow: var(--sombra);
+        border-radius: 28px;
+        padding: 32px;
+        margin-bottom: 28px;
+      }
+
+      .section-title {
+        margin: 0 0 24px;
+        color: var(--verde-oscuro);
+        font-size: clamp(1.7rem, 2.4vw, 2.4rem);
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .member {
+        background: linear-gradient(180deg, #ffffff 0%, #f1fff5 100%);
+        border: 1px solid rgba(29, 122, 77, 0.12);
+        border-radius: 18px;
+        padding: 20px 18px;
+        text-align: center;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .member:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 28px rgba(19, 96, 63, 0.1);
+      }
+
+      .avatar {
+        width: 76px;
+        height: 76px;
+        margin: 0 auto 14px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--verde-claro), var(--verde-oscuro));
+        color: var(--blanco);
+        display: grid;
+        place-items: center;
+        font-size: 1.7rem;
+        font-weight: 700;
+      }
+
+      .member h3 {
+        margin: 0 0 8px;
+        font-size: 1.1rem;
+        color: var(--gris-fuerte);
+      }
+
+      .member p {
+        margin: 0;
+        color: #4f5e58;
+        font-size: 0.94rem;
+      }
+
+      .article-layout {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 26px;
+        align-items: start;
+      }
+
+      .article-box textarea {
+        width: 100%;
+        min-height: 260px;
+        resize: vertical;
+        border: 2px solid rgba(29, 122, 77, 0.2);
+        border-radius: 18px;
+        background: var(--gris-claro);
+        padding: 18px 20px;
+        font-size: 1rem;
+        color: var(--gris-fuerte);
+        font-family: inherit;
+        outline: none;
+      }
+
+      .article-box textarea:focus {
+        border-color: var(--verde-medio);
+        box-shadow: 0 0 0 4px rgba(77, 196, 138, 0.12);
+      }
+
+      .photo-box {
+        background: linear-gradient(180deg, #f5fff8 0%, #ebf7ef 100%);
+        border: 2px dashed rgba(29, 122, 77, 0.35);
+        border-radius: 22px;
+        min-height: 260px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .photo-box label {
+        display: inline-block;
+        background: var(--verde-medio);
+        color: var(--blanco);
+        padding: 12px 22px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .photo-box input[type="file"] {
+        display: none;
+      }
+
+      .preview {
+        width: 100%;
+        max-width: 280px;
+        height: 180px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, rgba(77, 196, 138, 0.15), rgba(13, 92, 59, 0.08));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border: 1px solid rgba(13, 92, 59, 0.12);
+      }
+
+      .preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+      }
+
+      .preview-placeholder {
+        color: var(--verde-oscuro);
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+      }
+
+      @media (max-width: 760px) {
+        .hero,
+        .article-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="topbar">
+          <div class="brand">UTSC</div>
+        </div>
+
+        <div class="hero">
+          <div>
+            <h1>Crítica a la UTSC</h1>
+            <p>
+              Una reflexión sobre aspectos que requieren atención dentro de la universidad,
+              con enfoque en mejora, participación y construcción de un mejor ambiente académico.
+            </p>
+          </div>
+
+          <div class="hero-badge">
+            <span>Equipo</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="section-card">
+        <h2 class="section-title">Integrantes del equipo</h2>
+        <div class="team-grid">
+          <article class="member">
+            <div class="avatar">A</div>
+            <h3>Victor Hugo Mendoza</h3>
+            <p>Patrón</p>
+          </article>
+
+          <article class="member">
+            <div class="avatar">B</div>
+            <h3>Aldo David Soto</h3>
+            <p>Pagina 2</p>
+          </article>
+
+          <article class="member">
+            <div class="avatar">C</div>
+            <h3>Silvia Anahi Lopez</h3>
+            <p>Pagina 3</p>
+          </article>
+
+          <article class="member">
+            <div class="avatar">D</div>
+            <h3>Oscar Mancilla Rivera</h3>
+            <p>Pagina 4</p>
+          </article>
+
+          <article class="member">
+            <div class="avatar">E</div>
+            <h3>Angel Omar Reyes</h3>
+            <p>Pagina 5</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <h2 class="section-title">DE QUE TE QUEJAS TU?</h2>
+        <div class="article-layout">
+          <div class="article-box">
+            <textarea placeholder="Escribe aquí el artículo o la crítica que falta en la universidad..."></textarea>
+          </div>
+
+          <div class="photo-box">
+            <label for="foto">Subir foto</label>
+            <input id="foto" type="file" accept="image/*" />
+
+            <div class="preview" id="previewBox">
+              <img id="previewImage" alt="Vista previa" />
+              <div class="preview-placeholder" id="placeholderText">Vista previa</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <h2 class="section-title">QUEJA DE VICTOR</h2>
+        <div class="article-layout">
+          <div class="article-box">
+            <textarea readonly aria-label="Queja de Victor">No hay rollos en los baños de los Pesados, Aun no sabemos si son victimas del bandalismo o todos andamos enfermos de la panza por culpa de la mala comida en cafetería.</textarea>
+          </div>
+
+          <div class="photo-box" aria-label="Foto de Victor">
+            <div class="preview" style="max-width: 100%;">
+              <!-- Se oculta el texto, y se muestra la imagen directamente con src="imagen1.jpg" -->
+              <div id="placeholderText" class="preview-placeholder" style="display: none;">Foto de Victor</div>
+              <img id="previewImage" src="imagen1.jpg" alt="Queja de Victor" style="display: block; max-width: 100%; height: auto;" />
+            </div>
+            <!-- Input para cambiar la imagen (opcional, el script lo manejará) -->
+            <input type="file" id="foto" accept="image/*" style="margin-top: 10px;">
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const input = document.getElementById('foto');
+      const previewImage = document.getElementById('previewImage');
+      const placeholderText = document.getElementById('placeholderText');
+
+      input.addEventListener('change', function () {
+        const file = this.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          previewImage.src = event.target.result;
+          previewImage.style.display = 'block';
+          placeholderText.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+      });
+    </script>
+  </body>
+</html>
